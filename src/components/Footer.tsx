@@ -15,19 +15,19 @@ export default function Footer() {
         <Grid container spacing={5}>
           <Grid
             item
-            sm={12}
+            xs={12}
             md={4}
             sx={{ textAlign: { xs: "center", md: "left" } }}
           >
             <Typography variant="h6" gutterBottom>
-              Contactanos
+              Contáctanos
             </Typography>
             <Typography variant="body2">
-              Email: hola@webrocket.services
+              Correo electrónico: hola@webrocket.services
             </Typography>
             <Typography variant="body2">Teléfono: 333 000 0000</Typography>
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} md={4}>
             <Typography variant="body2" align="center">
               {"Copyright © "}
               <br />
@@ -46,15 +46,16 @@ export default function Footer() {
 
           <Grid
             item
-            sm={12}
+            xs={12}
             md={4}
             sx={{ textAlign: { xs: "center", md: "right" } }}
           >
             <Typography variant="h6" gutterBottom>
-              Web Rocket Services
+              Followup By WRS
             </Typography>
             <Typography variant="body2">
-              Automatizamos ideas de negocio.
+              Esta plataforma ha sido creada por Web Rocket Services donde
+              automatizamos tus ideas de negocio.
             </Typography>
           </Grid>
         </Grid>

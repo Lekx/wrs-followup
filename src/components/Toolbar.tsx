@@ -1,17 +1,24 @@
 import * as React from "react";
+import { Link as RouterLink } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
+import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import followupLogo from "../assets/img/followupwrs@0.25x.png";
+import { Link } from "@mui/material";
 
-const pages = ["Mi Lista", "Propuesta", "Seguimiento", "Recursos"];
+const pages = [
+  { text: "Home", url: "/" },
+  { text: "Mi Lista", url: "/proposals" },
+  { text: "Propuesta", url: "/proposals/1" },
+  { text: "Seguimiento", url: "/proposals/1/followup" },
+  { text: "Recursos", url: "/proposals/2/resources" },
+];
 
 function ToolBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -68,8 +75,8 @@ function ToolBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.text} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page.text}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -83,13 +90,14 @@ function ToolBar() {
             style={{ justifyContent: "flex-end" }}
           >
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "#2D404E", display: "block" }}
+              <Link
+                component={RouterLink}
+                key={page.text}
+                sx={{ m: 2, color: "#2D404E", display: "block" }}
+                to={page.url}
               >
-                {page}
-              </Button>
+                {page.text}
+              </Link>
             ))}
           </Box>
         </Toolbar>
