@@ -14,10 +14,7 @@ import { Link } from "@mui/material";
 
 const pages = [
   { text: "Home", url: "/" },
-  { text: "Mi Lista", url: "/proposals" },
-  { text: "Propuesta", url: "/proposals/1" },
-  { text: "Seguimiento", url: "/proposals/1/followup" },
-  { text: "Recursos", url: "/proposals/2/resources" },
+  { text: "Mis propuestas", url: "/proposals" },
 ];
 
 function ToolBar() {
