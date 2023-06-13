@@ -7,8 +7,6 @@ import "./App.css";
 import HomePage from "./pages/HomePage";
 import ProposalsPage from "./pages/ProposalsPage";
 import ProposalPage from "./pages/ProposalPage";
-import ProposalFollowupPage from "./pages/proposalFollowupPage";
-import ProposalResourcesPage from "./pages/ProposalResourcesPage";
 
 function App() {
   return (
@@ -19,15 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/proposals" element={<ProposalsPage />} />
-          <Route path="/proposals/:id" element={<ProposalPage />} />
-          <Route
-            path="/proposals/:id/followup"
-            element={<ProposalFollowupPage />}
-          />
-          <Route
-            path="/proposals/:id/resources"
-            element={<ProposalResourcesPage />}
-          />
+          <Route path="/proposals/:proposalId" element={<ProposalPage />} />
         </Routes>
 
         <Footer />
