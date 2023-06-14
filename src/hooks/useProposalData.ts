@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { proposalCoverRef, proposalFullRef } from "../data/Firebase";
 import { useParams } from "react-router-dom";
+import { Cover, CoverProposalResult } from "../shared/types";
 
-export const useProposalCoverData = () => {
-  const [proposalCoverData, setProposalCoverData] = useState(null);
+export const useProposalCoverData = (): CoverProposalResult => {
+  const [proposalCoverData, setProposalCoverData] = useState<Cover | null>(
+    null
+  );
+  const [isCoverLoading, setIsCoverLoading] = useState<boolean>(true);
   const { proposalId } = useParams();
 
   useEffect(() => {
@@ -12,13 +16,15 @@ export const useProposalCoverData = () => {
         const snapshot = await proposalCoverRef(proposalId || "");
         const fetchedData = snapshot.val();
         setProposalCoverData(fetchedData);
+        setIsCoverLoading(false);
       } catch (error) {
         console.log(error);
+        setIsCoverLoading(false);
       }
     };
     fetchData();
   }, []);
-  return proposalCoverData;
+  return { isCoverLoading, proposalCoverData };
 };
 
 export const useProposalFullData = () => {

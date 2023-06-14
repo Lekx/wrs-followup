@@ -1,31 +1,62 @@
-import { useState } from "react";
-import { Alert, AlertTitle, Box, Container, Tabs } from "@mui/material";
+import { useEffect, useState } from "react";
+import {
+  Alert,
+  AlertTitle,
+  Box,
+  CircularProgress,
+  Container,
+  Tabs,
+} from "@mui/material";
 import Tab from "@mui/material/Tab";
 import { useProposalCoverData } from "../hooks/useProposalData";
-import ProposalSummary from "../components/ProposalSummary";
 import { TabPanel, a11yProps } from "../components/Tabs";
+import ProposalSummary from "../components/ProposalSummary";
 import ProposalPin from "../components/ProposalPin";
+import { Cover } from "../shared/types";
 
 export default function ProposalPage() {
-  const proposalCoverData = useProposalCoverData() as any;
+  const { isCoverLoading, proposalCoverData } = useProposalCoverData();
   const [proposalAuthorized, setProposalAuthorized] = useState(false);
+  const [storageData, setStorageData] = useState<Cover[]>([]);
   const [tabValue, setTabValue] = useState<number>(0);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setTabValue(Number(newValue));
-    console.log(event);
+  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
+    setTabValue(newValue);
   };
+
+  const getStorageData = () => {
+    const storageData = localStorage.getItem("wrs-followup-proposals");
+    if (storageData) {
+      setStorageData(JSON.parse(storageData));
+    }
+  };
+
+  useEffect(() => {
+    getStorageData();
+
+    if (
+      !isCoverLoading &&
+      storageData.filter(
+        (proposal: Cover) => proposal.folio === proposalCoverData?.folio
+      ).length > 0
+    ) {
+      setProposalAuthorized(true);
+    }
+    // }
+  }, [isCoverLoading]);
+
   // User already authorized
   const handlePinResponse = () => {
-    const storageData = localStorage.getItem("wrs-followup-proposals");
-    if (!storageData?.indexOf(`"FOLIO": "${proposalCoverData.folio}"`)) {
-      let proposalsArray = [];
-      if (storageData) proposalsArray = JSON.parse(storageData);
-      proposalsArray.push(proposalCoverData);
+    if (
+      storageData.filter(
+        (proposal: Cover) => proposal.folio === proposalCoverData?.folio
+      )
+    ) {
+      if (proposalCoverData) storageData.push(proposalCoverData);
 
       localStorage.setItem(
         "wrs-followup-proposals",
-        JSON.stringify(proposalsArray)
+        JSON.stringify(storageData)
       );
     }
     setProposalAuthorized(true);
@@ -34,7 +65,16 @@ export default function ProposalPage() {
   return (
     <Box component="main" mx={4} my={8}>
       <Container maxWidth="xl" component="div">
-        {!proposalCoverData ? (
+        {isCoverLoading ? (
+          <Box textAlign={"center"}>
+            <CircularProgress
+              color="warning"
+              sx={{ margin: "auto" }}
+              size="4em"
+              thickness={4}
+            />
+          </Box>
+        ) : !proposalCoverData ? (
           <Alert severity="warning">
             <AlertTitle>Propuesta no encontrada</AlertTitle>
             No se puedo localizar ninguna propuesta con este número de
