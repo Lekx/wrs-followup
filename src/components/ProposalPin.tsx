@@ -49,6 +49,7 @@ export default function ProposalPin({ handleProposalCoverStorage }: any) {
             id="outlined-error-helper-text"
             label="PIN de la propuesta"
             value={proposalPin}
+            type="password"
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               setProposalPin(event.target.value);
             }}
@@ -66,7 +67,7 @@ export default function ProposalPin({ handleProposalCoverStorage }: any) {
       </Grid>
       <Snackbar
         open={openError}
-        autoHideDuration={60000}
+        autoHideDuration={5000}
         onClose={() => setOpenError(false)}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
