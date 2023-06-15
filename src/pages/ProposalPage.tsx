@@ -12,6 +12,7 @@ import ProposalSummary from "../components/ProposalSummary";
 import ProposalPin from "../components/ProposalPin";
 import ProposalBody from "../components/ProposalBody";
 import ProposalFollowup from "../components/ProposalFollowup";
+import ProposalResources from "../components/ProposalResources";
 
 export default function ProposalPage() {
   const { isCoverLoading, proposalCoverData } = useProposalCoverData();
@@ -101,7 +102,7 @@ export default function ProposalPage() {
                   <ProposalFollowup />
                 </TabPanel>
                 <TabPanel value={tabValue} index={2}>
-                  <h1>Recursos</h1>
+                  <ProposalResources />
                 </TabPanel>
               </Box>
             )}
