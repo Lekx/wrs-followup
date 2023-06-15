@@ -29,4 +29,10 @@ const proposalPinRef = (proposalId: string, pin: string) => {
   const nodeUrl = `proposals/${proposalId}/0/config/${pin}`;
   return get(ref(db, nodeUrl));
 };
-export { db, proposalCoverRef, proposalFullRef, proposalPinRef };
+
+const followupRef = (proposalId: string) => {
+  const nodeUrl = `proposals/${proposalId}/followup`;
+  return get(ref(db, nodeUrl));
+};
+
+export { db, proposalCoverRef, proposalFullRef, proposalPinRef, followupRef };

@@ -1,2 +1,2 @@
-export * from "./hookTypes";
+export * from "./utilTypes";
 export * from "./dataTypes";

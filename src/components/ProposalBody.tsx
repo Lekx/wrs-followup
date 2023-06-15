@@ -6,13 +6,10 @@ import {
   Box,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { Proposal, Module, CostPayment } from "../shared/types";
+import { ProposalBodyProps, Module, CostPayment } from "../shared/types";
 import SimpleList from "./SimpleList";
 import CostTable from "./CostTable";
 
-interface PropsDef {
-  proposalData: Proposal | null;
-}
 const calculateFinalCost = (payments: CostPayment[] | undefined) => {
   let total: number | undefined = 1000.25;
   const res = payments?.map((elem: CostPayment) => {
@@ -26,9 +23,9 @@ const calculateFinalCost = (payments: CostPayment[] | undefined) => {
     currency: "USD",
   });
 };
-export default function ProposalBody({ proposalData }: PropsDef) {
+export default function ProposalBody({ proposalData }: ProposalBodyProps) {
   return (
-    <Box my={5}>
+    <Box py={5} px={4} bgcolor="white">
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}

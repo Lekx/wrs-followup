@@ -9,8 +9,11 @@ import {
 } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { proposalPinRef } from "../data/Firebase";
+import { ProposalPinProps } from "../shared/types";
 
-export default function ProposalPin({ handleProposalCoverStorage }: any) {
+export default function ProposalPin({
+  handleProposalCoverStorage,
+}: ProposalPinProps) {
   const [proposalPin, setProposalPin] = useState<string>("");
   const [openError, setOpenError] = useState<boolean>(false);
   const { proposalId } = useParams();
