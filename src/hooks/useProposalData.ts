@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
-import { proposalCoverRef, proposalFullRef } from "../data/Firebase";
 import { useParams } from "react-router-dom";
-import { Cover, CoverProposalResult } from "../shared/types";
+import { proposalCoverRef, proposalFullRef } from "../data/Firebase";
+import {
+  Cover,
+  CoverProposalResult,
+  Proposal,
+  ProposalResult,
+} from "../shared/types";
 
 export const useProposalCoverData = (): CoverProposalResult => {
   const [proposalCoverData, setProposalCoverData] = useState<Cover | null>(
@@ -27,8 +32,9 @@ export const useProposalCoverData = (): CoverProposalResult => {
   return { isCoverLoading, proposalCoverData };
 };
 
-export const useProposalFullData = () => {
-  const [proposalData, setProposalData] = useState(null);
+export const useProposalFullData = (): ProposalResult => {
+  const [proposalData, setProposalData] = useState<Proposal | null>(null);
+  const [isProposalLoading, setIsProposalLoading] = useState(true);
   const { proposalId } = useParams();
 
   useEffect(() => {
@@ -37,12 +43,13 @@ export const useProposalFullData = () => {
         const snapshot = await proposalFullRef(proposalId || "");
         const fetchedData = snapshot.val();
         setProposalData(fetchedData);
+        setIsProposalLoading(false);
       } catch (error) {
         console.log(error);
+        setIsProposalLoading(false);
       }
     };
     fetchData();
   }, []);
-  console.log(proposalData);
-  return proposalData;
+  return { isProposalLoading, proposalData };
 };
