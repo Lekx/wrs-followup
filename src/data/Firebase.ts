@@ -34,5 +34,16 @@ const followupRef = (proposalId: string) => {
   const nodeUrl = `proposals/${proposalId}/followup`;
   return get(ref(db, nodeUrl));
 };
+const resourcesRef = (proposalId: string) => {
+  const nodeUrl = `proposals/${proposalId}/resources`;
+  return get(ref(db, nodeUrl));
+};
 
-export { db, proposalCoverRef, proposalFullRef, proposalPinRef, followupRef };
+export {
+  db,
+  proposalCoverRef,
+  proposalFullRef,
+  proposalPinRef,
+  followupRef,
+  resourcesRef,
+};

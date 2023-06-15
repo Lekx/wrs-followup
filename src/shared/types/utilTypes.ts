@@ -5,6 +5,8 @@ import {
   Followup,
   ListItem,
   Proposal,
+  ResourceGroup,
+  Resouce,
 } from ".";
 
 /* Type definitions for custom hooks */
@@ -22,6 +24,10 @@ export type FollowupResult = {
   followupData: Followup[] | null;
   isFollowupLoading: boolean;
 };
+export type ResourcesResult = {
+  resourceData: ResourceGroup[] | null;
+  isResourceLoading: boolean;
+};
 
 /* Properties definitions for components */
 export type ProposalBodyProps = {
@@ -29,11 +35,11 @@ export type ProposalBodyProps = {
 };
 
 export type CostTableProps = {
-  costs: CostPayment[] | undefined;
+  costs?: CostPayment[];
 };
 
 export type PriceListProps = {
-  list: CostConcept[] | undefined;
+  list?: CostConcept[];
 };
 
 export type ProposalPinProps = {
@@ -45,15 +51,19 @@ export type ProposalSummaryProps = {
 };
 
 export type SimpleListProps = {
-  list: ListItem[] | undefined;
-  numberedPrefix?: number | undefined;
-  simpleList?: boolean | undefined;
+  list?: ListItem[];
+  numberedPrefix?: number;
+  simpleList?: boolean;
 };
 
 export type TabPanelProps = {
   children?: React.ReactNode;
   index: number;
   value: number;
+};
+
+export type LinkListProps = {
+  list?: Resouce[];
 };
 
 /* Dictionary definitions */

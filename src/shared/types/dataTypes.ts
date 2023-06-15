@@ -118,3 +118,13 @@ export type Followup = {
   display: boolean;
   status?: string;
 };
+
+export type ResourceGroup = ListItem & {
+  list: Resouce[];
+  icon?: any;
+  display: boolean;
+};
+
+export type Resouce = ListItem & {
+  linkUrl: string;
+};
