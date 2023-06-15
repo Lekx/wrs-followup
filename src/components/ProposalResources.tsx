@@ -11,9 +11,9 @@ export default function ProposalResources() {
       {isResourceLoading ? (
         <Loader />
       ) : resourceData ? (
-        resourceData?.map((resource: ResourceGroup) => {
+        resourceData?.map((resource: ResourceGroup, index: number) => {
           return (
-            <Box mb={4}>
+            <Box mb={4} key={index}>
               <Typography
                 variant="subtitle1"
                 fontWeight={"bold"}

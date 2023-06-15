@@ -22,6 +22,7 @@ export type Cover = {
   folio: string;
   title: string;
   version: string;
+  uid: string;
 };
 
 export type Companay = {
