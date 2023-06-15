@@ -28,9 +28,9 @@ export default function OppositeContentTimeline() {
             },
           }}
         >
-          {followupData?.map((followup: Followup) => {
+          {followupData?.map((followup: Followup, index: number) => {
             return (
-              <TimelineItem>
+              <TimelineItem key={index}>
                 <TimelineOppositeContent color="#b69f57" fontWeight="bold">
                   <Tooltip title={followUpTypeDict[followup.type].text}>
                     <Icon component={followUpTypeDict[followup.type].icon} />
