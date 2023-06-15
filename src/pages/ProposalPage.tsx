@@ -8,15 +8,20 @@ import {
   Tabs,
 } from "@mui/material";
 import Tab from "@mui/material/Tab";
-import { useProposalCoverData } from "../hooks/useProposalData";
 import { TabPanel, a11yProps } from "../components/Tabs";
+import {
+  useProposalCoverData,
+  useProposalFullData,
+} from "../hooks/useProposalData";
 import ProposalSummary from "../components/ProposalSummary";
 import ProposalPin from "../components/ProposalPin";
 import { Cover } from "../shared/types";
+import ProposalBody from "../components/ProposalBody";
 
 export default function ProposalPage() {
   const { isCoverLoading, proposalCoverData } = useProposalCoverData();
-  const [proposalAuthorized, setProposalAuthorized] = useState(false);
+  const { proposalData } = useProposalFullData();
+  const [proposalAuthorized, setProposalAuthorized] = useState<boolean>(false);
   const [storageData, setStorageData] = useState<Cover[]>([]);
   const [tabValue, setTabValue] = useState<number>(0);
 
@@ -87,7 +92,7 @@ export default function ProposalPage() {
             {!proposalAuthorized ? (
               <ProposalPin handleProposalCoverStorage={handlePinResponse} />
             ) : (
-              <Box sx={{ width: "100%" }}>
+              <Box sx={{ width: "100%" }} mt={5}>
                 <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                   <Tabs
                     value={tabValue}
@@ -100,7 +105,7 @@ export default function ProposalPage() {
                   </Tabs>
                 </Box>
                 <TabPanel value={tabValue} index={0}>
-                  <h1>Propuestas</h1>
+                  <ProposalBody proposalData={proposalData} />
                 </TabPanel>
                 <TabPanel value={tabValue} index={1}>
                   <h1>Seguimiento</h1>

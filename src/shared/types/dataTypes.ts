@@ -4,10 +4,10 @@ export type Proposal = {
   acceptation: Acceptation;
   config: Config;
   summary: Summary;
-  costs: Cost;
+  cost: Cost;
   deliverables: Deliverable;
-  guarantees: Guarantee;
-  modules: Module;
+  guarantee: Guarantee;
+  modules: Module[];
   sections: Section;
   techs: Tech;
   terms: Term;
@@ -76,6 +76,7 @@ export type ListItem = {
   title: string;
   description?: string;
   imgUrl?: string;
+  list?: ListItem[];
 };
 
 export type Guarantee = ListItem & {
@@ -96,7 +97,10 @@ export type Section = ListItem & {
   list: ListItem[];
 };
 
-export type Summary = ListItem;
+export type Summary = {
+  issue: string;
+  solution: string;
+};
 
 export type Tech = ListItem & {
   list: ListItem[];

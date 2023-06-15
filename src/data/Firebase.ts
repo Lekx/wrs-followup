@@ -16,14 +16,17 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 const proposalCoverRef = (proposalId: string) => {
-  return get(ref(db, `proposals/${proposalId}/0/cover`));
+  const nodeUrl = `proposals/${proposalId}/0/cover`;
+  return get(ref(db, nodeUrl));
 };
 
 const proposalFullRef = (proposalId: string) => {
-  return get(ref(db, `proposals/${proposalId}/0`));
+  const nodeUrl = `proposals/${proposalId}/0`;
+  return get(ref(db, nodeUrl));
 };
 
 const proposalPinRef = (proposalId: string, pin: string) => {
-  return get(ref(db, `proposals/${proposalId}/0/config/${pin}`));
+  const nodeUrl = `proposals/${proposalId}/0/config/${pin}`;
+  return get(ref(db, nodeUrl));
 };
 export { db, proposalCoverRef, proposalFullRef, proposalPinRef };
