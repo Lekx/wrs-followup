@@ -1,11 +1,8 @@
 import { Box, Typography } from "@mui/material";
-import { CostPayment } from "../shared/types";
+import { CostPayment, CostTableProps } from "../shared/types";
 import PriceList from "./PriceList";
 
-interface PropsDef {
-  costs: CostPayment[] | undefined;
-}
-export default function CostTable({ costs }: PropsDef) {
+export default function CostTable({ costs }: CostTableProps) {
   return (
     <>
       {costs?.map((cost: CostPayment, index: number) => {

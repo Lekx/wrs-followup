@@ -4,13 +4,10 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { CostConcept } from "../shared/types/dataTypes";
+import { CostConcept, PriceListProps } from "../shared/types";
 import { Typography } from "@mui/material";
 
-interface PropsDef {
-  list: CostConcept[] | undefined;
-}
-export default function PriceList({ list }: PropsDef) {
+export default function PriceList({ list }: PriceListProps) {
   return (
     <TableContainer component={Paper}>
       <Table aria-label="Price list table">

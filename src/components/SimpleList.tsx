@@ -1,16 +1,12 @@
 import { Box, Typography } from "@mui/material";
 import { ListItem } from "../shared/types";
+import { SimpleListProps } from "../shared/types";
 
-interface PropsDef {
-  list: ListItem[] | undefined;
-  numberedPrefix?: number | undefined;
-  simpleList?: boolean | undefined;
-}
 export default function SimpleList({
   list,
   numberedPrefix,
   simpleList,
-}: PropsDef) {
+}: SimpleListProps) {
   return (
     <Box ml={5}>
       {list?.map((item: ListItem, index: number) => {

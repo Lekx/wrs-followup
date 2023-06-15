@@ -1,22 +1,17 @@
 import { useEffect, useState } from "react";
-import {
-  Alert,
-  AlertTitle,
-  Box,
-  CircularProgress,
-  Container,
-  Tabs,
-} from "@mui/material";
+import { Alert, AlertTitle, Box, Container, Tabs } from "@mui/material";
 import Tab from "@mui/material/Tab";
 import { TabPanel, a11yProps } from "../components/Tabs";
 import {
   useProposalCoverData,
   useProposalFullData,
 } from "../hooks/useProposalData";
+import { Cover } from "../shared/types";
+import Loader from "../components/Loader";
 import ProposalSummary from "../components/ProposalSummary";
 import ProposalPin from "../components/ProposalPin";
-import { Cover } from "../shared/types";
 import ProposalBody from "../components/ProposalBody";
+import ProposalFollowup from "../components/ProposalFollowup";
 
 export default function ProposalPage() {
   const { isCoverLoading, proposalCoverData } = useProposalCoverData();
@@ -72,12 +67,7 @@ export default function ProposalPage() {
       <Container maxWidth="xl" component="div">
         {isCoverLoading ? (
           <Box textAlign={"center"}>
-            <CircularProgress
-              color="warning"
-              sx={{ margin: "auto" }}
-              size="4em"
-              thickness={4}
-            />
+            <Loader />
           </Box>
         ) : !proposalCoverData ? (
           <Alert severity="warning">
@@ -108,7 +98,7 @@ export default function ProposalPage() {
                   <ProposalBody proposalData={proposalData} />
                 </TabPanel>
                 <TabPanel value={tabValue} index={1}>
-                  <h1>Seguimiento</h1>
+                  <ProposalFollowup />
                 </TabPanel>
                 <TabPanel value={tabValue} index={2}>
                   <h1>Recursos</h1>

@@ -14,11 +14,11 @@ export type Proposal = {
 };
 
 export type Cover = {
-  acceptedAt: Date;
+  acceptedAt: string;
   analyst: string;
   companyLogo: string;
   companyName: string;
-  displayDate: Date;
+  displayDate: string;
   folio: string;
   title: string;
   version: string;
@@ -108,4 +108,13 @@ export type Tech = ListItem & {
 
 export type Term = ListItem & {
   list: ListItem[];
+};
+
+export type Followup = {
+  type: string;
+  content: string;
+  creationDate: string;
+  createdBy: string;
+  display: boolean;
+  status?: string;
 };
