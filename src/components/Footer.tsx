@@ -1,8 +1,4 @@
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import { Box } from "@mui/material";
+import { Container, Typography, Link, Grid, Box } from "@mui/material";
 
 export default function Footer() {
   return (

@@ -10,7 +10,7 @@ export default function ProposalSummary({
 }: ProposalSummaryProps) {
   return (
     <Grid container spacing={2}>
-      <Grid item xs={10}>
+      <Grid item xs={12} md={10}>
         <Typography component="h1" variant="h4">
           {proposalCover.title}
         </Typography>
@@ -18,7 +18,13 @@ export default function ProposalSummary({
           {proposalCover.companyName}
         </Typography>
       </Grid>
-      <Grid item xs={2} sx={{ display: "flex", justifyContent: "center" }}>
+      <Grid
+        item
+        xs={8}
+        md={2}
+        sx={{ display: "flex", justifyContent: "center" }}
+        m="auto"
+      >
         <img
           src={proposalCover.companyLogo}
           style={{

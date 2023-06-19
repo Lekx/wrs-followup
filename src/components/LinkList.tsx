@@ -1,6 +1,6 @@
-// import Link from "@mui/material/Link";
-import { LinkListProps, Resouce } from "../shared/types";
 import { Box, Link } from "@mui/material";
+import { LinkListProps, Resouce } from "../shared/types";
+
 export default function LinkList({ list }: LinkListProps) {
   return (
     <Box px={4}>

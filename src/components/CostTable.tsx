@@ -7,7 +7,7 @@ export default function CostTable({ costs }: CostTableProps) {
     <>
       {costs?.map((cost: CostPayment, index: number) => {
         return (
-          <Box key={index} mx={5} my={2}>
+          <Box key={index} mx={{ sm: 0, md: 4 }} my={2}>
             <Typography
               color="#b69f57"
               mb={2}

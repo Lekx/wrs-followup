@@ -24,7 +24,7 @@ export default function ProposalsPage() {
     }
   }, []);
   return (
-    <Box component="main" mx={4} my={8}>
+    <Box component="main" mx={{ sm: 0, md: 4 }} my={8}>
       <Container maxWidth="xl" component="div">
         <Typography variant="h5" mb={2}>
           Mis propuestas
