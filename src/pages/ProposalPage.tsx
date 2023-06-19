@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import { Alert, AlertTitle, Box, Container, Tabs } from "@mui/material";
-import Tab from "@mui/material/Tab";
-import { TabPanel, a11yProps } from "../components/Tabs";
+import { Alert, AlertTitle, Box, Container, Tab, Tabs } from "@mui/material";
 import {
   useProposalCoverData,
   useProposalFullData,
 } from "../hooks/useProposalData";
 import { Cover } from "../shared/types";
 import Loader from "../components/Loader";
+import { TabPanel, a11yProps } from "../components/Tabs";
 import ProposalSummary from "../components/ProposalSummary";
 import ProposalPin from "../components/ProposalPin";
 import ProposalBody from "../components/ProposalBody";
@@ -64,7 +63,7 @@ export default function ProposalPage() {
   };
 
   return (
-    <Box component="main" mx={4} my={8}>
+    <Box component="main" mx={{ sm: 0, md: 4 }} my={8}>
       <Container maxWidth="xl" component="div">
         {isCoverLoading ? (
           <Box textAlign={"center"}>
@@ -88,7 +87,9 @@ export default function ProposalPage() {
                   <Tabs
                     value={tabValue}
                     onChange={handleChange}
-                    aria-label="basic tabs example"
+                    scrollButtons="auto"
+                    aria-label="tabs for proposal sections"
+                    variant="scrollable"
                   >
                     <Tab label="Propuesta" {...a11yProps(0)} />
                     <Tab label="Seguimiento" {...a11yProps(1)} />

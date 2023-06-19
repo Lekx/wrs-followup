@@ -25,14 +25,16 @@ const calculateFinalCost = (payments: CostPayment[] | undefined) => {
 };
 export default function ProposalBody({ proposalData }: ProposalBodyProps) {
   return (
-    <Box py={5} px={4} bgcolor="white">
+    <Box px={{ sm: 0, md: 4 }} py={5} bgcolor="white">
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="summary-content"
           id="summary-header"
         >
-          <Typography variant="h5">1. Resumen Ejecutivo.</Typography>
+          <Typography variant="h6" color="#b69f57">
+            1. Resumen Ejecutivo.
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography pb={2}>{proposalData?.summary.issue}</Typography>
@@ -46,7 +48,9 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
           aria-controls="modules-content"
           id="modules-header"
         >
-          <Typography variant="h5">2. Alcance de desarrollo.</Typography>
+          <Typography variant="h6" color="#b69f57">
+            2. Alcance de desarrollo.
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
           {proposalData?.modules.map((module: Module, id: number) => {
@@ -71,7 +75,9 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
           aria-controls="sections-content"
           id="sections-header"
         >
-          <Typography variant="h5">3. Otras Funcionalidades.</Typography>
+          <Typography variant="h6" color="#b69f57">
+            3. Otras Funcionalidades.
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography pb={1} variant="subtitle1" fontWeight="bold">
@@ -88,7 +94,9 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
           aria-controls="techs-content"
           id="techs-header"
         >
-          <Typography variant="h5">4. Tecnologías de desarrollo.</Typography>
+          <Typography variant="h6" color="#b69f57">
+            4. Tecnologías de desarrollo.
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography pb={1} variant="subtitle1" fontWeight="bold">
@@ -105,7 +113,9 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
           aria-controls="deliverables-content"
           id="deliverables-header"
         >
-          <Typography variant="h5">5. Entregables.</Typography>
+          <Typography variant="h6" color="#b69f57">
+            5. Entregables.
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography pb={1} variant="subtitle1" fontWeight="bold">
@@ -124,7 +134,9 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
           aria-controls="cost-content"
           id="cost-header"
         >
-          <Typography variant="h5">6. Costos.</Typography>
+          <Typography variant="h6" color="#b69f57">
+            6. Costos.
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography pb={1} variant="subtitle1" fontWeight="bold">
@@ -132,7 +144,11 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
           </Typography>
           <Typography pb={5}>{proposalData?.cost.description}</Typography>
           <CostTable costs={proposalData?.cost.payments} />
-          <Typography m={5} p={1} bgcolor="rgba(182, 159, 87, 0.2)">
+          <Typography
+            mx={{ sm: 0, md: 4 }}
+            p={1}
+            bgcolor="rgba(182, 159, 87, 0.2)"
+          >
             <Typography component="label" fontWeight={"bold"}>
               Total del desarrollo
             </Typography>
@@ -153,7 +169,7 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
           aria-controls="guarantee-content"
           id="guarantee-header"
         >
-          <Typography variant="h5">
+          <Typography variant="h6" color="#b69f57">
             7. Duración del proyecto y garantía.
           </Typography>
         </AccordionSummary>
@@ -172,7 +188,9 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
           aria-controls="terms-content"
           id="terms-header"
         >
-          <Typography variant="h5">8. Términos y condiciones.</Typography>
+          <Typography variant="h6" color="#b69f57">
+            8. Términos y condiciones.
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography pb={1} variant="subtitle1" fontWeight="bold">

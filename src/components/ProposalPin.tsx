@@ -37,8 +37,8 @@ export default function ProposalPin({
   };
   return (
     <>
-      <Grid container spacing={2} m={5}>
-        <Grid item xs={7} mx={"auto"}>
+      <Grid container spacing={2} m={{ sm: 2, md: 4 }}>
+        <Grid item xs={12} md={8} mx={"auto"}>
           <Typography component="h1" variant="h5">
             Acceso a propuesta
           </Typography>
@@ -58,7 +58,7 @@ export default function ProposalPin({
             }}
           />
         </Grid>
-        <Grid item xs={7} mx={"auto"} textAlign={"center"}>
+        <Grid item xs={8} mx={"auto"} textAlign={"center"}>
           <Button
             variant="contained"
             onClick={getAuthorization}
@@ -74,7 +74,7 @@ export default function ProposalPin({
         onClose={() => setOpenError(false)}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
-        <Alert severity="error" sx={{ width: "500px", padding: "10px" }}>
+        <Alert severity="error" sx={{ width: "400px", p: 1, mt: 8 }}>
           ¡PIN Incorrecto!
         </Alert>
       </Snackbar>
