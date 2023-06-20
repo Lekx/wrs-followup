@@ -11,10 +11,10 @@ import {
   Link,
 } from "@mui/material/";
 import MenuIcon from "@mui/icons-material/Menu";
-import followupLogo from "../assets/img/followupwrs@0.25x.png";
+import followupLogo from "../assets/logos/followupwrs@0.25x.png";
 
 const pages = [
-  { text: "Home", url: "/" },
+  { text: "Followup", url: "/" },
   { text: "Mis propuestas", url: "/proposals" },
 ];
 

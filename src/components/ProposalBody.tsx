@@ -32,7 +32,7 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
           aria-controls="summary-content"
           id="summary-header"
         >
-          <Typography variant="h6" color="#b69f57">
+          <Typography variant="h6" color="#2d404e">
             1. Resumen Ejecutivo.
           </Typography>
         </AccordionSummary>
@@ -48,7 +48,7 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
           aria-controls="modules-content"
           id="modules-header"
         >
-          <Typography variant="h6" color="#b69f57">
+          <Typography variant="h6" color="#2d404e">
             2. Alcance de desarrollo.
           </Typography>
         </AccordionSummary>
@@ -75,7 +75,7 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
           aria-controls="sections-content"
           id="sections-header"
         >
-          <Typography variant="h6" color="#b69f57">
+          <Typography variant="h6" color="#2d404e">
             3. Otras Funcionalidades.
           </Typography>
         </AccordionSummary>
@@ -94,7 +94,7 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
           aria-controls="techs-content"
           id="techs-header"
         >
-          <Typography variant="h6" color="#b69f57">
+          <Typography variant="h6" color="#2d404e">
             4. Tecnologías de desarrollo.
           </Typography>
         </AccordionSummary>
@@ -113,7 +113,7 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
           aria-controls="deliverables-content"
           id="deliverables-header"
         >
-          <Typography variant="h6" color="#b69f57">
+          <Typography variant="h6" color="#2d404e">
             5. Entregables.
           </Typography>
         </AccordionSummary>
@@ -134,7 +134,7 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
           aria-controls="cost-content"
           id="cost-header"
         >
-          <Typography variant="h6" color="#b69f57">
+          <Typography variant="h6" color="#2d404e">
             6. Costos.
           </Typography>
         </AccordionSummary>
@@ -147,7 +147,7 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
           <Typography
             mx={{ sm: 0, md: 4 }}
             p={1}
-            bgcolor="rgba(182, 159, 87, 0.2)"
+            bgcolor="rgba(240, 246, 0, 0.5)"
           >
             <Typography component="label" fontWeight={"bold"}>
               Total del desarrollo
@@ -169,7 +169,7 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
           aria-controls="guarantee-content"
           id="guarantee-header"
         >
-          <Typography variant="h6" color="#b69f57">
+          <Typography variant="h6" color="#2d404e">
             7. Duración del proyecto y garantía.
           </Typography>
         </AccordionSummary>
@@ -188,7 +188,7 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
           aria-controls="terms-content"
           id="terms-header"
         >
-          <Typography variant="h6" color="#b69f57">
+          <Typography variant="h6" color="#2d404e">
             8. Términos y condiciones.
           </Typography>
         </AccordionSummary>

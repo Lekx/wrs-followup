@@ -13,6 +13,7 @@ import { ProposalPinProps } from "../shared/types";
 
 export default function ProposalPin({
   handleProposalCoverStorage,
+  coverSpecialNote,
 }: ProposalPinProps) {
   const [proposalPin, setProposalPin] = useState<string>("");
   const [openError, setOpenError] = useState<boolean>(false);
@@ -68,6 +69,12 @@ export default function ProposalPin({
           </Button>
         </Grid>
       </Grid>
+
+      {coverSpecialNote != undefined ? (
+        <Grid sm={12} textAlign="center" mt={5}>
+          <Typography color="red">{coverSpecialNote}</Typography>
+        </Grid>
+      ) : null}
       <Snackbar
         open={openError}
         autoHideDuration={5000}

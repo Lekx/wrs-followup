@@ -14,7 +14,7 @@ export default function ProposalResources() {
         resourceData?.map((resource: ResourceGroup, index: number) => {
           return (
             <Box mb={4} key={index}>
-              <Typography variant="h6" fontWeight={"bold"} color="#b69f57">
+              <Typography variant="h6" fontWeight={"bold"} color="#2d404e">
                 {resource.title}
               </Typography>
               <Typography>{resource.description}</Typography>
