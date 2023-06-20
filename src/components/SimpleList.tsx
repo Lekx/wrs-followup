@@ -17,7 +17,7 @@ export default function SimpleList({
                 <Typography
                   variant="subtitle1"
                   fontWeight={"bold"}
-                  color="#b69f57"
+                  color="#2d404e"
                 >
                   {numberedPrefix ? `${numberedPrefix}.${index + 1}.` : null}
                   {item.title}

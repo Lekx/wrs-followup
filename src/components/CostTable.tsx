@@ -9,7 +9,7 @@ export default function CostTable({ costs }: CostTableProps) {
         return (
           <Box key={index} mx={{ sm: 0, md: 4 }} my={2}>
             <Typography
-              color="#b69f57"
+              color="#2d404e"
               mb={2}
               variant="subtitle1"
               fontWeight={"bold"}

@@ -44,6 +44,7 @@ export type PriceListProps = {
 
 export type ProposalPinProps = {
   handleProposalCoverStorage: Function;
+  coverSpecialNote?: String;
 };
 
 export type ProposalSummaryProps = {

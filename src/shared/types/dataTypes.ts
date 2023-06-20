@@ -23,6 +23,7 @@ export type Cover = {
   title: string;
   version: string;
   uid: string;
+  specialNote?: string;
 };
 
 export type Companay = {

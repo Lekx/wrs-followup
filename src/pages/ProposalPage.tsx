@@ -80,7 +80,10 @@ export default function ProposalPage() {
             <ProposalSummary proposalCover={proposalCoverData} />
 
             {!proposalAuthorized ? (
-              <ProposalPin handleProposalCoverStorage={handlePinResponse} />
+              <ProposalPin
+                handleProposalCoverStorage={handlePinResponse}
+                coverSpecialNote={proposalCoverData.specialNote}
+              />
             ) : (
               <Box sx={{ width: "100%" }} mt={5}>
                 <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
