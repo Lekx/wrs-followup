@@ -1,8 +1,4 @@
-import parse, {
-  DOMNode,
-  Element,
-  HTMLReactParserOptions,
-} from "html-react-parser";
+import parse from "html-react-parser";
 import {
   Accordion,
   AccordionSummary,

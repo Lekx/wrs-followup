@@ -53,7 +53,7 @@ export type ProposalSummaryProps = {
 
 export type SimpleListProps = {
   list?: ListItem[];
-  numberedPrefix?: number;
+  numberedPrefix?: number | string;
   simpleList?: boolean;
 };
 
