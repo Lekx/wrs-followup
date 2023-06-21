@@ -30,6 +30,9 @@ export const FollowupTheme = createTheme({
         main{
           min-height: calc(100vh - 291px);
         }
+        b{
+          background-color: rgba(240, 246, 0, 0.3);
+        }
       `,
     },
     MuiAppBar: {

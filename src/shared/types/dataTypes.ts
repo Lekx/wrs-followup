@@ -53,6 +53,8 @@ export type Contact = {
 
 export type Cost = ListItem & {
   payments: CostPayment[];
+  details?: string;
+  terms?: string;
 };
 
 export type CostPayment = {

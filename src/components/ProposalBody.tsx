@@ -1,3 +1,8 @@
+import parse, {
+  DOMNode,
+  Element,
+  HTMLReactParserOptions,
+} from "html-react-parser";
 import {
   Accordion,
   AccordionSummary,
@@ -23,6 +28,7 @@ const calculateFinalCost = (payments: CostPayment[] | undefined) => {
     currency: "USD",
   });
 };
+
 export default function ProposalBody({ proposalData }: ProposalBodyProps) {
   return (
     <Box px={{ sm: 0, md: 4 }} py={5} bgcolor="white">
@@ -37,8 +43,12 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography pb={2}>{proposalData?.summary.issue}</Typography>
-          <Typography pb={2}>{proposalData?.summary.solution}</Typography>
+          <Typography pb={2}>
+            {parse(proposalData?.summary.issue || "")}
+          </Typography>
+          <Typography pb={2}>
+            {parse(proposalData?.summary.solution || "")}
+          </Typography>
         </AccordionDetails>
       </Accordion>
 
@@ -62,7 +72,10 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
                 <Typography pb={1} variant="subtitle1">
                   {module.description}
                 </Typography>
-                <SimpleList list={module.subModules} />
+                <SimpleList
+                  list={module.subModules}
+                  numberedPrefix={`2.${id + 1}`}
+                />
               </Box>
             );
           })}
@@ -83,7 +96,9 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
           <Typography pb={1} variant="subtitle1" fontWeight="bold">
             {proposalData?.sections.title}
           </Typography>
-          <Typography pb={5}>{proposalData?.sections.description}</Typography>
+          <Typography pb={5}>
+            {parse(proposalData?.sections.description || "")}
+          </Typography>
           <SimpleList list={proposalData?.sections.list} numberedPrefix={3} />
         </AccordionDetails>
       </Accordion>
@@ -102,7 +117,9 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
           <Typography pb={1} variant="subtitle1" fontWeight="bold">
             {proposalData?.techs.title}
           </Typography>
-          <Typography pb={5}>{proposalData?.techs.description}</Typography>
+          <Typography pb={5}>
+            {parse(proposalData?.techs.description || "")}
+          </Typography>
           <SimpleList list={proposalData?.techs.list} />
         </AccordionDetails>
       </Accordion>
@@ -122,9 +139,12 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
             {proposalData?.deliverables.title}
           </Typography>
           <Typography pb={5}>
-            {proposalData?.deliverables.description}
+            {parse(proposalData?.deliverables.description || "")}
           </Typography>
-          <SimpleList list={proposalData?.deliverables.subsections} />
+          <SimpleList
+            list={proposalData?.deliverables.subsections}
+            numberedPrefix={5}
+          />
         </AccordionDetails>
       </Accordion>
 
@@ -142,7 +162,15 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
           <Typography pb={1} variant="subtitle1" fontWeight="bold">
             {proposalData?.cost.title}
           </Typography>
-          <Typography pb={5}>{proposalData?.cost.description}</Typography>
+          <Typography pb={5}>
+            {parse(proposalData?.cost.description || "")}
+          </Typography>
+          <Typography pb={5}>
+            {parse(proposalData?.cost.details || "")}
+          </Typography>
+          <Typography pb={5}>
+            {parse(proposalData?.cost.terms || "")}
+          </Typography>
           <CostTable costs={proposalData?.cost.payments} />
           <Typography
             mx={{ sm: 0, md: 4 }}
@@ -177,7 +205,9 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
           <Typography pb={1} variant="subtitle1" fontWeight="bold">
             {proposalData?.guarantee.title}
           </Typography>
-          <Typography pb={5}>{proposalData?.guarantee.description}</Typography>
+          <Typography pb={5}>
+            {parse(proposalData?.guarantee.description || "")}
+          </Typography>
           <SimpleList list={proposalData?.guarantee.list} simpleList={true} />
         </AccordionDetails>
       </Accordion>
@@ -196,7 +226,9 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
           <Typography pb={1} variant="subtitle1" fontWeight="bold">
             {proposalData?.terms.title}
           </Typography>
-          <Typography pb={5}>{proposalData?.terms.description}</Typography>
+          <Typography pb={5}>
+            {parse(proposalData?.terms.description || "")}
+          </Typography>
           <SimpleList list={proposalData?.terms.list} numberedPrefix={8} />
         </AccordionDetails>
       </Accordion>
