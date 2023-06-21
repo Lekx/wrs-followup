@@ -32,11 +32,11 @@ const proposalPinRef = (proposalId: string, pin: string) => {
 };
 
 const followupRef = (proposalId: string) => {
-  const nodeUrl = `${baseName}/${proposalId}/proposal/followup`;
+  const nodeUrl = `${baseName}/${proposalId}/followup`;
   return get(ref(db, nodeUrl));
 };
 const resourcesRef = (proposalId: string) => {
-  const nodeUrl = `${baseName}/${proposalId}/proposal/resources`;
+  const nodeUrl = `${baseName}/${proposalId}/resources`;
   return get(ref(db, nodeUrl));
 };
 
