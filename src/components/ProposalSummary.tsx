@@ -29,6 +29,7 @@ export default function ProposalSummary({
           src={proposalCover.companyLogo}
           style={{
             maxWidth: "100%",
+            maxHeight: "100px",
             margin: "auto",
           }}
         />

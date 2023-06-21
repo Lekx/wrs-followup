@@ -25,7 +25,7 @@ export default function SimpleList({
                 <Typography>{item.description}</Typography>
               </>
             ) : (
-              <Typography variant={"overline"}>- {item.title}</Typography>
+              <Typography>- {item.title}</Typography>
             )}
 
             <SimpleList list={item.list} simpleList={true} />
