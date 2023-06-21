@@ -28,7 +28,7 @@ export const FollowupTheme = createTheme({
           margin: auto;
         }
         main{
-          min-height: calc(100vh - 355px);
+          min-height: calc(100vh - 291px);
         }
       `,
     },

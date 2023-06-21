@@ -1,9 +1,8 @@
 import { Routes, Route } from "react-router-dom";
-import ToolBar from "./components/Toolbar";
-import Footer from "./components/Footer";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { FollowupTheme } from "./FollowupTheme";
-import "./App.css";
+import ToolBar from "./components/Toolbar";
+import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import ProposalsPage from "./pages/ProposalsPage";
 import ProposalPage from "./pages/ProposalPage";

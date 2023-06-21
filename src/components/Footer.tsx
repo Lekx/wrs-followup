@@ -19,9 +19,25 @@ export default function Footer() {
               Contáctanos
             </Typography>
             <Typography variant="body2">
-              Correo electrónico: hola@webrocket.services
+              Website:
+              <Link
+                color="inherit"
+                href="https://webrocket.services/"
+                target="_blank"
+              >
+                https://webrocket.services
+              </Link>
             </Typography>
-            <Typography variant="body2">Teléfono: 333 000 0000</Typography>
+            <Typography variant="body2">
+              Email:
+              <Link
+                color="inherit"
+                href="mailto:hola@webrocket.services"
+                target="_blank"
+              >
+                hola@webrocket.services
+              </Link>
+            </Typography>
           </Grid>
           <Grid item xs={12} md={4}>
             <Typography variant="body2" align="center">
@@ -36,7 +52,6 @@ export default function Footer() {
               </Link>
               <br />
               {new Date().getFullYear()}
-              {"."}
             </Typography>
           </Grid>
 
@@ -55,7 +70,6 @@ export default function Footer() {
             </Typography>
           </Grid>
         </Grid>
-        <Box mt={5}></Box>
       </Container>
     </Box>
   );
