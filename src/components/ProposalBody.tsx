@@ -103,7 +103,7 @@ export default function ProposalBody({ proposalData }: ProposalBodyProps) {
             {proposalData?.techs.title}
           </Typography>
           <Typography pb={5}>{proposalData?.techs.description}</Typography>
-          <SimpleList list={proposalData?.sections.list} />
+          <SimpleList list={proposalData?.techs.list} />
         </AccordionDetails>
       </Accordion>
 
