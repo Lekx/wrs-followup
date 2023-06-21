@@ -1,4 +1,12 @@
-import { Box, Chip, Icon, Tooltip, Typography } from "@mui/material";
+import {
+  Alert,
+  AlertTitle,
+  Box,
+  Chip,
+  Icon,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import {
   Timeline,
   TimelineItem,
@@ -19,7 +27,7 @@ export default function OppositeContentTimeline() {
     <Box py={5} px={{ sm: 2, md: 4 }} bgcolor={"white"}>
       {isFollowupLoading ? (
         <Loader />
-      ) : (
+      ) : followupData ? (
         <Timeline>
           {followupData?.map((followup: Followup, index: number) => {
             return (
@@ -50,6 +58,12 @@ export default function OppositeContentTimeline() {
             );
           })}
         </Timeline>
+      ) : (
+        <Alert severity="warning">
+          <AlertTitle>No se encontro seguimiento</AlertTitle>
+          Aún no se ha hecho seguimiento en el proyecto, si crees que es un
+          error, por favor póngase en contacto con su analista.
+        </Alert>
       )}
     </Box>
   );
