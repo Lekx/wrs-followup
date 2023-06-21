@@ -15,27 +15,28 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
+const baseName = "projects";
 const proposalCoverRef = (proposalId: string) => {
-  const nodeUrl = `proposals/${proposalId}/0/cover`;
+  const nodeUrl = `${baseName}/${proposalId}/proposal/cover`;
   return get(ref(db, nodeUrl));
 };
 
 const proposalFullRef = (proposalId: string) => {
-  const nodeUrl = `proposals/${proposalId}/0`;
+  const nodeUrl = `${baseName}/${proposalId}/proposal`;
   return get(ref(db, nodeUrl));
 };
 
 const proposalPinRef = (proposalId: string, pin: string) => {
-  const nodeUrl = `proposals/${proposalId}/0/config/${pin}`;
+  const nodeUrl = `${baseName}/${proposalId}/proposal/config/${pin}`;
   return get(ref(db, nodeUrl));
 };
 
 const followupRef = (proposalId: string) => {
-  const nodeUrl = `proposals/${proposalId}/followup`;
+  const nodeUrl = `${baseName}/${proposalId}/followup`;
   return get(ref(db, nodeUrl));
 };
 const resourcesRef = (proposalId: string) => {
-  const nodeUrl = `proposals/${proposalId}/resources`;
+  const nodeUrl = `${baseName}/${proposalId}/resources`;
   return get(ref(db, nodeUrl));
 };
 

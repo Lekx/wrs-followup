@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { Alert, AlertTitle, Box, Container, Tab, Tabs } from "@mui/material";
 import {
   useProposalCoverData,
@@ -63,56 +64,61 @@ export default function ProposalPage() {
   };
 
   return (
-    <Box component="main" mx={{ sm: 0, md: 4 }} my={8}>
-      <Container maxWidth="xl" component="div">
-        {isCoverLoading ? (
-          <Box textAlign={"center"}>
-            <Loader />
-          </Box>
-        ) : !proposalCoverData ? (
-          <Alert severity="warning">
-            <AlertTitle>Propuesta no encontrada</AlertTitle>
-            No se puedo localizar ninguna propuesta con este número de
-            identificador, por favor póngase en contacto con su analista.
-          </Alert>
-        ) : (
-          <>
-            <ProposalSummary proposalCover={proposalCoverData} />
+    <>
+      <Helmet>
+        <title>Followup - Propuesta {`${proposalCoverData?.uid}`}</title>
+      </Helmet>
+      <Box component="main" mx={{ sm: 0, md: 4 }} my={8}>
+        <Container maxWidth="xl" component="div">
+          {isCoverLoading ? (
+            <Box textAlign={"center"}>
+              <Loader />
+            </Box>
+          ) : !proposalCoverData ? (
+            <Alert severity="warning">
+              <AlertTitle>Propuesta no encontrada</AlertTitle>
+              No se puedo localizar ninguna propuesta con este número de
+              identificador, por favor póngase en contacto con su analista.
+            </Alert>
+          ) : (
+            <>
+              <ProposalSummary proposalCover={proposalCoverData} />
 
-            {!proposalAuthorized ? (
-              <ProposalPin
-                handleProposalCoverStorage={handlePinResponse}
-                coverSpecialNote={proposalCoverData.specialNote}
-              />
-            ) : (
-              <Box sx={{ width: "100%" }} mt={5}>
-                <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-                  <Tabs
-                    value={tabValue}
-                    onChange={handleChange}
-                    scrollButtons="auto"
-                    aria-label="tabs for proposal sections"
-                    variant="scrollable"
-                  >
-                    <Tab label="Propuesta" {...a11yProps(0)} />
-                    <Tab label="Seguimiento" {...a11yProps(1)} />
-                    <Tab label="Recursos" {...a11yProps(2)} />
-                  </Tabs>
+              {!proposalAuthorized ? (
+                <ProposalPin
+                  handleProposalCoverStorage={handlePinResponse}
+                  coverSpecialNote={proposalCoverData.specialNote}
+                />
+              ) : (
+                <Box sx={{ width: "100%" }} mt={5}>
+                  <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                    <Tabs
+                      value={tabValue}
+                      onChange={handleChange}
+                      scrollButtons="auto"
+                      aria-label="tabs for proposal sections"
+                      variant="scrollable"
+                    >
+                      <Tab label="Propuesta" {...a11yProps(0)} />
+                      <Tab label="Seguimiento" {...a11yProps(1)} />
+                      <Tab label="Recursos" {...a11yProps(2)} />
+                    </Tabs>
+                  </Box>
+                  <TabPanel value={tabValue} index={0}>
+                    <ProposalBody proposalData={proposalData} />
+                  </TabPanel>
+                  <TabPanel value={tabValue} index={1}>
+                    <ProposalFollowup />
+                  </TabPanel>
+                  <TabPanel value={tabValue} index={2}>
+                    <ProposalResources />
+                  </TabPanel>
                 </Box>
-                <TabPanel value={tabValue} index={0}>
-                  <ProposalBody proposalData={proposalData} />
-                </TabPanel>
-                <TabPanel value={tabValue} index={1}>
-                  <ProposalFollowup />
-                </TabPanel>
-                <TabPanel value={tabValue} index={2}>
-                  <ProposalResources />
-                </TabPanel>
-              </Box>
-            )}
-          </>
-        )}
-      </Container>
-    </Box>
+              )}
+            </>
+          )}
+        </Container>
+      </Box>
+    </>
   );
 }

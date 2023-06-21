@@ -71,7 +71,7 @@ export default function ProposalPin({
       </Grid>
 
       {coverSpecialNote != undefined ? (
-        <Grid sm={12} textAlign="center" mt={5}>
+        <Grid item sm={12} textAlign="center" mt={5}>
           <Typography color="red">{coverSpecialNote}</Typography>
         </Grid>
       ) : null}
