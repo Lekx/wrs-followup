@@ -4,6 +4,7 @@ import EventIcon from "@mui/icons-material/Event";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import { ProposalSummaryProps } from "../shared/types";
+import Handshake from "../assets/img/handshake.png";
 
 export default function ProposalSummary({
   proposalCover,
@@ -26,7 +27,7 @@ export default function ProposalSummary({
         m="auto"
       >
         <img
-          src={proposalCover.rejectedAt ? "" : proposalCover.companyLogo}
+          src={proposalCover.rejectedAt ? Handshake : proposalCover.companyLogo}
           style={{
             maxWidth: "100%",
             maxHeight: "100px",
