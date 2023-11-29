@@ -26,7 +26,7 @@ export default function ProposalSummary({
         m="auto"
       >
         <img
-          src={proposalCover.companyLogo}
+          src={proposalCover.rejectedAt ? "" : proposalCover.companyLogo}
           style={{
             maxWidth: "100%",
             maxHeight: "100px",
@@ -48,15 +48,29 @@ export default function ProposalSummary({
             />
           </Typography>
         </Tooltip>
-        <Tooltip title="Analista del proyecto">
-          <Typography mr={1} my={1} component="div" display={"inline-block"}>
-            <Chip
-              label={`Por ${proposalCover.analyst || "-"}`}
-              icon={<SupportAgentIcon />}
-            />
-          </Typography>
-        </Tooltip>
-        {proposalCover.acceptedAt === "" ? (
+        {proposalCover.rejectedAt ? (
+          <Tooltip title="Fecha de rechazo de la propuesta">
+            <Typography mr={1} my={1} component="div" display={"inline-block"}>
+              <Chip
+                color="error"
+                label={`Rechazado el ${proposalCover.rejectedAt || "-"}`}
+                icon={<EventAvailableIcon />}
+              />
+            </Typography>
+          </Tooltip>
+        ) : (
+          <Tooltip title="Analista del proyecto">
+            <Typography mr={1} my={1} component="div" display={"inline-block"}>
+              <Chip
+                label={`Por ${proposalCover.analyst || "-"}`}
+                icon={<SupportAgentIcon />}
+              />
+            </Typography>
+          </Tooltip>
+        )}
+        {proposalCover.rejectedAt ? (
+          ""
+        ) : proposalCover.acceptedAt === "" ? (
           <Button variant="contained" color="success">
             Aceptar propuesta
           </Button>

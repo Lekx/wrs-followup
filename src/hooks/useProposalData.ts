@@ -42,6 +42,7 @@ export const useProposalFullData = (): ProposalResult => {
       try {
         const snapshot = await proposalFullRef(proposalId || "");
         const fetchedData = snapshot.val();
+
         setProposalData(fetchedData);
         setIsProposalLoading(false);
       } catch (error) {

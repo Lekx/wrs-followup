@@ -1,6 +1,15 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import { Alert, AlertTitle, Box, Container, Tab, Tabs } from "@mui/material";
+import parse from "html-react-parser";
+import {
+  Alert,
+  AlertTitle,
+  Box,
+  Container,
+  Tab,
+  Tabs,
+  Typography,
+} from "@mui/material";
 import {
   useProposalCoverData,
   useProposalFullData,
@@ -32,6 +41,21 @@ export default function ProposalPage() {
     }
   };
 
+  // const checkAndDeleteRejectedFromLocalStorage = () => {
+  //   const newStorageData: any = storageData
+  //     .map((proposal: Cover) => {
+  //       return proposal.uid != proposalCoverData?.uid ? proposal : null;
+  //     })
+  //     .filter((obj) => obj !== null);
+
+  //   // setStorageData(newStorageData);
+  //   console.log("i save this new", newStorageData);
+  //   localStorage.setItem(
+  //     "wrs-followup-proposals",
+  //     JSON.stringify(newStorageData)
+  //   );
+  // };
+
   useEffect(() => {
     getStorageData();
 
@@ -43,7 +67,6 @@ export default function ProposalPage() {
     ) {
       setProposalAuthorized(true);
     }
-    // }
   }, [isCoverLoading]);
 
   // User already authorized
@@ -66,7 +89,7 @@ export default function ProposalPage() {
   return (
     <>
       <Helmet>
-        <title>Followup - Propuesta {`${proposalCoverData?.uid}`}</title>
+        <title>Followup - Propuesta {`${proposalCoverData?.title}`}</title>
       </Helmet>
       <Box component="main" mx={{ sm: 0, md: 4 }} my={8}>
         <Container maxWidth="xl" component="div">
@@ -83,37 +106,47 @@ export default function ProposalPage() {
           ) : (
             <>
               <ProposalSummary proposalCover={proposalCoverData} />
-
-              {!proposalAuthorized ? (
+              {proposalCoverData.rejectedAt ? (
+                <Box bgcolor="white" mt={5} p={5}>
+                  <Typography color="muted" component="div">
+                    {parse(proposalCoverData.rejectedReason || "")}
+                  </Typography>
+                  <Typography color="red" component="div">
+                    {proposalCoverData.rejectedAt}
+                  </Typography>
+                </Box>
+              ) : !proposalAuthorized ? (
                 <ProposalPin
                   handleProposalCoverStorage={handlePinResponse}
                   coverSpecialNote={proposalCoverData.specialNote}
                 />
               ) : (
-                <Box sx={{ width: "100%" }} mt={5}>
-                  <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-                    <Tabs
-                      value={tabValue}
-                      onChange={handleChange}
-                      scrollButtons="auto"
-                      aria-label="tabs for proposal sections"
-                      variant="scrollable"
-                    >
-                      <Tab label="Propuesta" {...a11yProps(0)} />
-                      <Tab label="Seguimiento" {...a11yProps(1)} />
-                      <Tab label="Recursos" {...a11yProps(2)} />
-                    </Tabs>
+                <>
+                  <Box sx={{ width: "100%" }} mt={5}>
+                    <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                      <Tabs
+                        value={tabValue}
+                        onChange={handleChange}
+                        scrollButtons="auto"
+                        aria-label="tabs for proposal sections"
+                        variant="scrollable"
+                      >
+                        <Tab label="Propuesta" {...a11yProps(0)} />
+                        <Tab label="Seguimiento" {...a11yProps(1)} />
+                        <Tab label="Recursos" {...a11yProps(2)} />
+                      </Tabs>
+                    </Box>
+                    <TabPanel value={tabValue} index={0}>
+                      <ProposalBody proposalData={proposalData} />
+                    </TabPanel>
+                    <TabPanel value={tabValue} index={1}>
+                      <ProposalFollowup />
+                    </TabPanel>
+                    <TabPanel value={tabValue} index={2}>
+                      <ProposalResources />
+                    </TabPanel>
                   </Box>
-                  <TabPanel value={tabValue} index={0}>
-                    <ProposalBody proposalData={proposalData} />
-                  </TabPanel>
-                  <TabPanel value={tabValue} index={1}>
-                    <ProposalFollowup />
-                  </TabPanel>
-                  <TabPanel value={tabValue} index={2}>
-                    <ProposalResources />
-                  </TabPanel>
-                </Box>
+                </>
               )}
             </>
           )}

@@ -24,6 +24,8 @@ export type Cover = {
   version: string;
   uid: string;
   specialNote?: string;
+  rejectedAt?: string;
+  rejectedReason?: string;
 };
 
 export type Companay = {
